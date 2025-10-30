@@ -1036,6 +1036,13 @@ with tab_wi:
             x="price:Q", y="positive_ratio:Q", tooltip=["name","price","positive_ratio"]
         )
         st.altair_chart((base + cand_mark).interactive(), use_container_width=True)
+        
+        from pathlib import Path
+        import streamlit as st
+
+        base = Path("data/processed/embeddings")
+        for p in ["faiss.index", "embeddings.npy", "app_ids.npy", "index_mapping.csv"]:
+            st.caption(f"{p}: {'OK' if (base/p).exists() else 'MISSING'}")
 
         # --- Advanced analytics (sales) — WHAT-IF ---
         with st.expander("📊 Advanced analytics — sales & pricing", expanded=False):
