@@ -631,6 +631,36 @@ with st.sidebar:
     st.slider("Min positive ratio", 0.0, 1.0, key="min_ratio")
     st.slider("Release year range", 2013, 2025, key="year_range")
     st.checkbox("Show table under cards", key="show_table")
+    
+    
+with st.sidebar.expander("🔎 Diagnostics", expanded=False):
+    import os
+    from pathlib import Path
+
+    need = [
+        "data/processed/embeddings/embeddings.npy",
+        "data/processed/embeddings/app_ids.npy",
+        "data/processed/embeddings/faiss.index",
+        "data/processed/embeddings/index_mapping.csv",
+        "data/processed/embeddings/tfidf_vectorizer.pkl",
+        "data/processed/embeddings/tfidf_matrix.npz",
+        "data/processed/apps_clean.parquet",
+        "data/processed/text_features.parquet",
+        "data/processed/tags.csv",
+        "data/processed/genres.csv",
+    ]
+    for p in need:
+        fp = Path(p)
+        ok = fp.exists()
+        size = fp.stat().st_size if ok else 0
+        st.write(f"{'✅' if ok else '❌'} {p}  ({size} bytes)")
+        if ok and size < 500:  # muhtemel LFS pointer uyarısı
+            try:
+                head = open(fp, "rb").read(200)
+                if b"git-lfs" in head:
+                    st.warning(f"{p} looks like a Git LFS pointer. Run `git lfs pull` locally / ensure host pulls LFS.")
+            except Exception:
+                pass
 
 # ----------------------------
 # PAGES
