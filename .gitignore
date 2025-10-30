@@ -32,6 +32,7 @@ data/processed/embeddings/**
 !data/processed/embeddings/index_mapping.csv
 !data/processed/embeddings/tfidf_vectorizer.pkl
 !data/processed/embeddings/tfidf_matrix.npz
+!data/processed/embeddings/faiss.index
 
 # Temp/backup scripts
 *_backup.py
