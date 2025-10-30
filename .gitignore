@@ -16,12 +16,23 @@ venv/
 notebooks/
 *.ipynb
 
-# Data files (large local data)
+# === Local data: ignore heavy stuff by default ===
 data/raw/
-data/processed/embeddings/
-data/processed/*.parquet
+data/processed/**/*.parquet
 data/processed/steam.duckdb
+data/processed/embeddings/**
 
-# Backup or temp scripts
+# === DEMO ALLOW-LIST (unignore) ===
+!data/
+!data/processed/
+!data/processed/apps.csv
+!data/processed/genres.csv
+!data/processed/tags.csv
+!data/processed/embeddings/
+!data/processed/embeddings/index_mapping.csv
+!data/processed/embeddings/tfidf_vectorizer.pkl
+!data/processed/embeddings/tfidf_matrix.npz
+
+# Temp/backup scripts
 *_backup.py
 *copy.py
