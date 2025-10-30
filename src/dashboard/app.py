@@ -157,6 +157,10 @@ def add_sales_proxies(df: pd.DataFrame) -> pd.DataFrame:
 ROOT = Path(__file__).resolve().parents[2]
 load_dotenv(ROOT / ".env")
 
+# Bridge: Streamlit secrets -> env
+if "GROQ_API_KEY" in st.secrets:
+    os.environ["GROQ_API_KEY"] = st.secrets["GROQ_API_KEY"]
+
 
 MODEL_NAME = "sentence-transformers/all-mpnet-base-v2"
 # alternatif hızlı: "BAAI/bge-small-en-v1.5" (normalize_embeddings=True önerilir)
