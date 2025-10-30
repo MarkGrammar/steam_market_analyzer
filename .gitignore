@@ -1,0 +1,27 @@
+# Byte-compiled / cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+.venv/
+venv/
+
+# Secrets
+.env
+.streamlit/secrets.toml
+
+# Notebooks
+notebooks/
+*.ipynb
+
+# Data files (large local data)
+data/raw/
+data/processed/embeddings/
+data/processed/*.parquet
+data/processed/steam.duckdb
+
+# Backup or temp scripts
+*_backup.py
+*copy.py
