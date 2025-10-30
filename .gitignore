@@ -28,6 +28,8 @@ data/processed/embeddings/**
 !data/processed/apps.csv
 !data/processed/genres.csv
 !data/processed/tags.csv
+!data/processed/embeddings/embeddings.npy
+!data/processed/embeddings/app_ids.npy
 !data/processed/embeddings/
 !data/processed/embeddings/index_mapping.csv
 !data/processed/embeddings/tfidf_vectorizer.pkl
